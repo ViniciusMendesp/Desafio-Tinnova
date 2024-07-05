@@ -3,6 +3,7 @@
 import { getUsers, User } from "@/api/get-users";
 import { TableUsers } from "@/components/shared/table-users";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function Users() {
   const [formData, setFormData] = useState<User[]>([]);
@@ -28,6 +29,7 @@ export default function Users() {
   const handleDelete = (index: number) => {
     const updatedData = formData.filter((_, i: number) => i !== index);
     setFormData(updatedData);
+    toast("Usuário deletado com sucesso!");
     localStorage.setItem("users", JSON.stringify(updatedData));
   };
 

@@ -3,6 +3,7 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
 import { Navbar } from "@/components/shared/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 
 const fontSans = FontSans({
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Toaster />
       </body>
     </html>
   );

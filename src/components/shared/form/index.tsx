@@ -1,7 +1,8 @@
 import { createUser } from "@/api/create-user";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,16 @@ export function ProfileForm() {
     createUser(values);
     setFormData([...formData, values]);
     form.reset();
+    toast("Usuário cadastrado com sucesso!", {
+      action: {
+        label: "Ver usuários",
+        onClick: () => {
+          act(() => {
+            window.location.href = "/users";
+          });
+        },
+      },
+    });
   };
 
   return (
